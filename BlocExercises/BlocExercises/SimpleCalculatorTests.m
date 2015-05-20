@@ -59,6 +59,7 @@
     NSInteger remainder2 = [self.calculator remainderOfNumber:dividend dividedByNumber:divisor2];
     
     XCTAssertEqual(remainder2, 3, @"15 is not evenly divisible by 4; the remainder should be 3.");
+    
 }
 
 
