@@ -21,8 +21,10 @@
     NSString *resultString;
     
     NSRange cheeseRange = [cheeseName rangeOfString:@" CheEse" options:NSCaseInsensitiveSearch];
+    
     if (cheeseRange.location == NSNotFound) {
         resultString = (cheeseName);
+    
     } else{
     
     NSString * shortName = [cheeseName stringByReplacingCharactersInRange:cheeseRange withString:@""];
