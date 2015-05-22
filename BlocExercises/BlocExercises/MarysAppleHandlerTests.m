@@ -31,6 +31,10 @@
     [super tearDown];
 }
 
+- (void)testThatMaryCannotPurchaseAnythingFor2Dollars {
+    NSString *purchasableItem = [self.appleHandler itemMaryCanPurchaseForDollars:2];
+    XCTAssertEqualObjects(purchasableItem, @"get out of my store", @"If Mary has $2, she should be told to get out.");
+}
 - (void)testThatMaryCannotPurchaseAnythingFor4Dollars {
     NSString *purchasableItem = [self.appleHandler itemMaryCanPurchaseForDollars:4];
     XCTAssertEqualObjects(purchasableItem, @"get out of my store", @"If Mary has $4, she should be told to get out.");
@@ -44,6 +48,12 @@
 - (void)testThatMaryCanPurchaseAnAppleFor6Dollars {
     NSString *purchasableItem = [self.appleHandler itemMaryCanPurchaseForDollars:6];
     XCTAssertEqualObjects(purchasableItem, @"have an apple", @"If Mary has $6, she should receive an offer to purchase an apple.");
+}
+
+
+- (void)testThatMaryCanPurchaseAnAppleFor8Dollars {
+    NSString *purchasableItem = [self.appleHandler itemMaryCanPurchaseForDollars:8];
+    XCTAssertEqualObjects(purchasableItem, @"have an apple", @"If Mary has $8, she should receive an offer to purchase an apple.");
 }
 
 - (void)testThatMaryCanPurchaseAnAppleComputerFor1000Dollars {
