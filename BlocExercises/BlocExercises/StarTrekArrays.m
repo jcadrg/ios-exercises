@@ -26,9 +26,17 @@
 }
 
 - (BOOL) characterArrayContainsWorf:(NSArray *)characterArray {
-    NSPredicate* characterPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] 'Worf'"];
-    NSArray* filteredData = [characterArray filteredArrayUsingPredicate:characterPredicate];
-    return YES;
+    BOOL resultBool;
+    NSPredicate* characterPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS [c]'Worf'"];
+    NSArray* filterArray =[characterArray filteredArrayUsingPredicate:characterPredicate];
+    if(filterArray.count>0){
+        resultBool = YES;
+    }else{
+        resultBool = NO;
+    }
+//    return filterArray.count;
+    
+    return resultBool;
 }
 
 @end
