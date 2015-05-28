@@ -11,31 +11,35 @@
 @implementation NumberHandler
 
 - (NSNumber *) numberThatIsTwiceAsBigAsNumber:(NSNumber *)number {
-    number = @([ number intValue]*2);
-    return number;
+    NSNumber*numberDouble = @([ number intValue]*2);
+    return numberDouble;
 }
 
 - (NSArray *) arrayOfNumbersBetweenNumber:(NSInteger)number andOtherNumber: (NSInteger)otherNumber {
-    NSNumber*number1=[NSNumber numberWithInteger:number];
-    NSNumber*number2=[NSNumber numberWithInteger:otherNumber];
-    NSMutableArray * numberArray;
-    if([number1 compare:number2]==NSOrderedAscending){
-        for (NSInteger x=number1.integerValue; x<=number2.integerValue; x++) {
-            [numberArray addObject:[NSNumber numberWithInteger:x]];
+    NSMutableArray *numberArray=[[NSMutableArray alloc] init];
+    if (number>otherNumber) {
+        for (NSInteger i = otherNumber; i <= number; i++) {
+            [numberArray addObject:[NSNumber numberWithInteger:i]];
         }
-    
-    }else if ([number1 compare:number2]==NSOrderedDescending){
-        for (NSInteger x=number2.integerValue; x<=number1.integerValue; x++) {
-            [numberArray addObject:[NSNumber numberWithInteger:x]];
+    }else{
+        for (NSInteger i = number; i <= otherNumber; i++) {
+            [numberArray addObject:[NSNumber numberWithInteger:i]];
         }
-    
+        
     }
+    
+    
   
     return numberArray;
 }
 
 - (NSInteger) lowestNumberInArray:(NSArray *)arrayOfNumbers {
-    return 0;
+    
+    NSNumber* numberValue=[arrayOfNumbers valueForKeyPath:@"@min.integerValue"];
+    NSInteger lowestNumber = [numberValue integerValue];
+    
+    
+    return lowestNumber;
 }
 
 @end
