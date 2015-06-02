@@ -7,8 +7,9 @@ Strings
 */
 
 func favoriteCheeseStringWithCheese(cheese: String) -> String {
-    // WORK HERE
-    return cheese
+    let resultString = "My favorite cheese is " + cheese
+    
+    return (resultString)
 }
 
 let fullSentence = favoriteCheeseStringWithCheese("cheddar")
@@ -20,13 +21,13 @@ Arrays & Dictionaries
 
 */
 
-let numberArray = [1, 2, 3, 4]
+var numberArray = [1, 2, 3, 4]
 // Add 5 to this array
-// WORK HERE
+numberArray.append(5)
 
-let numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
+var numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
 // Add 5 : "five" to this dictionary
-// WORK HERE
+numberDictionary [5]="five"
 
 /*
 
@@ -35,10 +36,14 @@ Loops
 */
 
 // Use a closed range loop to print 1 - 10, inclusively
-// WORK HERE
+for i in 1...10{
+    println(i)
+}
 
 // Use a half-closed range loop to print 1 - 10, inclusively
-// WORK HERE
+for i in 1..<11{
+    print(i)
+}
 
 let worf = [
     "name": "Worf",
@@ -57,8 +62,16 @@ let characters = [worf, picard]
 
 func favoriteDrinksArrayForCharacters(characters:Array<Dictionary<String, String>>) -> Array<String> {
     // return an array of favorite drinks, like ["prune juice", "tea, Earl Grey, hot"]
-    // WORK HERE
-    return []
+    
+    var drinkArray = [String]()
+    
+    for character in characters {
+        if let drink = character["favorite drink"] {
+            drinkArray.append(drink)
+        }
+    }
+    
+    return drinkArray
 }
 
 let favoriteDrinks = favoriteDrinksArrayForCharacters(characters)
@@ -75,9 +88,14 @@ Functions
 
 let strings = ["milk", "eggs", "bread", "challah"]
 
-// WORK HERE - make your function and pass `strings` in
+func stringOutput(stringArray:[String]) -> String{
+    let stringRepresentation = ";".join(stringArray)
+    return stringRepresentation
+}
 
 let expectedOutput = "milk;eggs;bread;challah"
+
+stringOutput(strings)
 
 /*
 
@@ -88,4 +106,9 @@ Closures
 let cerealArray = ["Golden Grahams", "Cheerios", "Trix", "Cap'n Crunch OOPS! All Berries", "Cookie Crisp"]
 
 // Use a closure to sort this array alphabetically
-// WORK HERE
+/*let wizardsSortedByDarkArtsGrade = sorted(wizardsFromDatabase, {(student1: HogwartsStudent, student2: HogwartsStudent) -> Bool in
+    return student1.darkArtsGrade > student2.darkArtsGrade
+})*/
+let cerealArraySorting = sorted(cerealArray, { (a, b) -> Bool in
+    return a<b
+})
